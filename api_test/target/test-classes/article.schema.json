@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "$id": "#/properties/data",
+      "type": "object",
+      "default": {},
+      "required": [
+        "id",
+        "title",
+        "content",
+        "updated_at",
+        "created_at",
+        "user"
+      ],
+      "properties": {
+        "id": {
+          "$id": "#/properties/data/properties/id",
+          "type": "integer",
+          "default": 0
+        },
+        "title": {
+          "$id": "#/properties/data/properties/title",
+          "type": "string",
+          "title": "The title schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "one title"
+          ]
+        },
+        "content": {
+          "$id": "#/properties/data/properties/content",
+          "type": "string",
+          "title": "The content schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "content"
+          ]
+        },
+        "updated_at": {
+          "$id": "#/properties/data/properties/updated_at",
+          "type": "integer",
+          "title": "The updated_at schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            1627006281
+          ]
+        },
+        "created_at": {
+          "$id": "#/properties/data/properties/created_at",
+          "type": "integer",
+          "title": "The created_at schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            1627006281
+          ]
+        },
+        "user": {
+          "$id": "#/properties/data/properties/user",
+          "type": "object",
+          "title": "The user schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "id": 1111,
+              "name": "Juan Dexter Lebsack IV",
+              "email": "Alexie_Robel@yahoo.com"
+            }
+          ],
+          "required": [
+            "id",
+            "name",
+            "email"
+          ],
+          "properties": {
+            "id": {
+              "$id": "#/properties/data/properties/user/properties/id",
+              "type": "integer",
+              "title": "The id schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": 0,
+              "examples": [
+                1111
+              ]
+            },
+            "name": {
+              "$id": "#/properties/data/properties/user/properties/name",
+              "type": "string",
+              "title": "The name schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "Juan Dexter Lebsack IV"
+              ]
+            },
+            "email": {
+              "$id": "#/properties/data/properties/user/properties/email",
+              "type": "string",
+              "title": "The email schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "Alexie_Robel@yahoo.com"
+              ]
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -50,7 +50,7 @@ public class AuthenticationTests extends Base{
         User testUser = new User(
                 "Pablo Juan",
                 "Alexie_Robel@yahoo.com",
-                "pasword");
+                "password");
 
         given()
                 .body(testUser)
@@ -59,6 +59,7 @@ public class AuthenticationTests extends Base{
                 .then()
                 .log().all()
                 .spec(ResponseSpecifications.validatePositiveResponse())
+                .statusCode(200)
                 .body("token.access_token", Matchers.notNullValue())
                 .body("user.email", Matchers.equalTo("Alexie_Robel@yahoo.com"));
     }

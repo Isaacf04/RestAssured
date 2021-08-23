@@ -17,43 +17,43 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ArticlesTests extends Base{
 
-    @Test(description = "This test aims to create a new article")
-    public void createArticleTest(){
+    @Test(description = "This test aims to create a new post")
+    public void createPostTest(){
 
         Article testArticle = new Article("randomTitle", "Lorem Impusim short mode");
 
         given().spec(RequestSpecifications.useJWTAuthentication())
                 .body(testArticle)
             .when()
-                .post("/v1/article")
+                .post("/v1/post")
             .then()
                 .log().all()
                 .spec(ResponseSpecifications.validatePositiveResponse())
                 .body("message", Matchers.equalTo("Article created"));
     }
 
-    @Test(description = "This test aims to get all articles", groups = "useArticle")
-    public void getAllArticlesTest(){
-
-        given().spec(RequestSpecifications.useJWTAuthentication())
-                .when()
-                .get("/v1/articles")
-                .then()
-                .log().all()
-                .statusCode(200)
-                .body("results[0].data[0].id", Matchers.equalTo(articleId));
-    }
-
-    @Test(description = "This test aims to get all articles")
-    public void getOneArticlesTest(){
-
-        Response response = given().spec(RequestSpecifications.useJWTAuthentication())
-                .when()
-                .get("/v1/article/" + articleId);
-
-        assertThat(response.asString(), matchesJsonSchemaInClasspath("article.schema.json"));
-        assertThat(response.path("data.id"), Matchers.equalTo(articleId));
-
-    }
+//    @Test(description = "This test aims to get all articles", groups = "useArticle")
+//    public void getAllArticlesTest(){
+//
+//        given().spec(RequestSpecifications.useJWTAuthentication())
+//                .when()
+//                .get("/v1/articles")
+//                .then()
+//                .log().all()
+//                .statusCode(200)
+//                .body("results[0].data[0].id", Matchers.equalTo(articleId));
+//    }
+//
+//    @Test(description = "This test aims to get all articles")
+//    public void getOneArticlesTest(){
+//
+//        Response response = given().spec(RequestSpecifications.useJWTAuthentication())
+//                .when()
+//                .get("/v1/article/" + articleId);
+//
+//        assertThat(response.asString(), matchesJsonSchemaInClasspath("article.schema.json"));
+//        assertThat(response.path("data.id"), Matchers.equalTo(articleId));
+//
+//    }
 
 }

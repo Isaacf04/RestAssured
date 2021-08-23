@@ -2,9 +2,9 @@
 
 <suite name="Regression" thread-count="2" parallel="tests">
 
-    <parameter name="host" value="https://api-coffee-testing.herokuapp.com"></parameter>
+    <parameter name="host" value="http://localhost:9000"></parameter>
 
-    <test name="createPostTest">
+    <test name="AuthenticationTests">
         <classes>
             <class name="AuthenticationTests"></class>
         </classes>
