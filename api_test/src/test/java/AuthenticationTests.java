@@ -50,7 +50,7 @@ public class AuthenticationTests extends Base{
         User testUser = new User(
                 "Pablo Juan",
                 "Alexie_Robel@yahoo.com",
-                "password");
+                "pasword");
 
         given()
                 .body(testUser)
