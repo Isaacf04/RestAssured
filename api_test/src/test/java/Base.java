@@ -17,14 +17,14 @@ public class Base {
 
     // before groups
 
-    @BeforeMethod(groups = "useArticle")
-    void createArticle(){
-        articleId = RequestHelpers.createRandomArticleAndGetID();
-    }
-
-    @AfterMethod(groups = "useArticle")
-    void deleteArticle(){
-        RequestHelpers.cleanUpArticle(articleId);
-    }
+//    @BeforeMethod(groups = "useArticle")
+//    void createArticle(){
+//        articleId = RequestHelpers.createRandomArticleAndGetID();
+//    }
+//
+//    @AfterMethod(groups = "useArticle")
+//    void deleteArticle(){
+//        RequestHelpers.cleanUpArticle(articleId);
+//    }
 
 }

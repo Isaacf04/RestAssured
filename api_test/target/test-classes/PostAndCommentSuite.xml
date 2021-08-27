@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Regression" thread-count="2" parallel="tests">
+
+    <parameter name="host" value="https://api-coffee-testing.herokuapp.com"></parameter>
+
+    <test name="createPostTest">
+        <classes>
+            <class name="PostCommentTest"></class>
+        </classes>
+    </test>
+
+</suite>
