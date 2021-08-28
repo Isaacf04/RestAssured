@@ -26,7 +26,7 @@
                 <version>2.22.0</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/heroku.suite.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/PostAndCommentSuite.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>

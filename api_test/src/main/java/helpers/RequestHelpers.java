@@ -31,7 +31,7 @@ public class RequestHelpers {
 
     public static int createRandomArticleAndGetID () {
         Article randomArticle = new Article("randome", "randome");
-       Response response = given().spec(RequestSpecifications.useJWTAuthentication())
+       Response response = given().spec(RequestSpecifications.userBasicAuthentication())
                 .body(randomArticle)
                 .when()
                 .log().all()
@@ -47,3 +47,6 @@ public class RequestHelpers {
     }
 
 }
+
+
+
