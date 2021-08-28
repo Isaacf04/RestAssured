@@ -261,7 +261,7 @@ public class PostCommentTest extends Base{
                 .body(Matchers.notNullValue());
     }
 
-// Positive test:
+// Positive test: comment.One
     @Test(description = "This test aims to get a comment by postid")
     public void getComments(){
         Post newPost = new Post("Volcan_Poas", "Lorem Impusim short mode");
@@ -296,6 +296,47 @@ public class PostCommentTest extends Base{
                 .body(newComment)
                 .when()
                 .get("/v1/comments/" + id)
+                .then()
+                .log().all()
+                .spec(ResponseSpecifications.validatePositiveResponse())
+                .body("results", Matchers.notNullValue());
+
+    }
+// Negative test: comment.One
+    @Test(description = "This test aims to get a comment by postid")
+    public void getCommentsNegative(){
+        Post newPost = new Post("Volcan_Poas", "Lorem Impusim short mode");
+        Response response = given().spec(RequestSpecifications.useJWTAuthentication())
+                .body(newPost)
+                .when()
+                .post("/v1/post");
+
+        JsonPath jsonPath = response.jsonPath();
+        String id = Integer.toString(jsonPath.get("id"));
+        Comment newComment = new Comment("Volcan", "SoloVolcano");
+
+        Response responseComment = given()
+                .auth()
+                .preemptive()
+                .basic("testuser", "testpass")
+                .header("Accept", ContentType.JSON.getAcceptHeader())
+                .contentType(ContentType.JSON)
+                .body(newComment)
+                .when()
+                .post("/v1/comment/" + id);
+
+        jsonPath = responseComment.jsonPath();
+        String commentid = Integer.toString(jsonPath.get("id"));
+
+        given()
+                .auth()
+                .preemptive()
+                .basic("testuser", "testpass")
+                .header("Accept", ContentType.JSON.getAcceptHeader())
+                .contentType(ContentType.JSON)
+                .body(newComment)
+                .when()
+                .get("/v1/comments/" + id + 1)
                 .then()
                 .log().all()
                 .spec(ResponseSpecifications.validatePositiveResponse())
@@ -346,7 +387,7 @@ public class PostCommentTest extends Base{
 
     // Negative test
 
-    @Test(description = "This test aims to get a comment by postid")
+    @Test(description = "This test aims to get all comment by postid")
     public void getCommentbyidNegative(){
         Post newPost = new Post("Volcan_Poas", "Lorem Impusim short mode");
         Response response = given().spec(RequestSpecifications.useJWTAuthentication())
